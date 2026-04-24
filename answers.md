@@ -82,3 +82,92 @@ Câu A4 (5đ) — Table
     + Gây khó khăn cho khả năng tiếp cận (Accessibility): Các thiết bị đọc màn hình (Screen Reader) sẽ đọc bảng theo thứ tự ô, khiến người khiếm thị bị rối loạn khi nghe nội dung trang web được bố trí bằng bảng.
     + Hành vi hiển thị không mong muốn: Các thẻ trong bảng có những đặc tính hiển thị riêng (như tự động co giãn) khiến việc kiểm soát giao diện trên các thiết bị khác nhau (Responsive) trở nên cực kỳ khó khăn so với dùng CSS.
 
+PHẦN C — SUY LUẬN (20 điểm)
+
+Câu C1 (10đ) — Thiết kế cấu trúc
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phẩm | ShopPL</title>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ShopPL</div>
+        <nav aria-label="Menu chính"> <ul> <li><a href="/">Trang chủ</a></li>
+                <li><a href="/products">Sản phẩm</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav aria-label="breadcrumb"> <ol> <li><a href="/">Trang chủ</a></li>
+            <li><a href="/mobile">Điện thoại</a></li>
+            <li aria-current="page">iPhone 16</li> </ol>
+    </nav>
+
+    <main>
+        <article class="product-details">
+            
+            <section class="product-gallery"> <figure> <img src="img1.jpg" alt="iPhone 16 mặt trước" loading="eager"> <figcaption>Ảnh mặt trước sản phẩm</figcaption>
+                </figure>
+                <img src="img2.jpg" alt="iPhone 16 mặt sau" loading="lazy">
+                <img src="img3.jpg" alt="iPhone 16 cạnh bên" loading="lazy">
+                <img src="img4.jpg" alt="iPhone 16 cụm camera" loading="lazy">
+                <img src="img5.jpg" alt="iPhone 16 hộp đựng" loading="lazy">
+            </section>
+
+            <section class="product-info">
+                <h1>Tên sản phẩm</h1> <p class="rating">⭐⭐⭐⭐⭐ (4.5/5)</p> <p class="price">
+                    <del>30.000.000đ</del> <ins>25.000.000đ</ins> </p>
+                <div class="description">
+                    <h2>Mô tả sản phẩm</h2> <p>Nội dung mô tả chi tiết...</p>
+                </div>
+            </section>
+
+            <section class="specs">
+                <h2>Thông số kỹ thuật</h2>
+                <table> <thead> <tr>
+                            <th>Tính năng</th>
+                            <th>Chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody> <tr>
+                            <td>Màn hình</td>
+                            <td>6.1 inch</td>
+                        </tr>
+                        <tr>
+                            <td>Chipset</td>
+                            <td>A18 Bionic</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="reviews">
+                <h2>Đánh giá từ khách hàng</h2>
+                <article class="comment"> <header>
+                        <strong>Nguyễn Văn A</strong> <time datetime="2026-04-24">24/04/2026</time> </header>
+                    <blockquote>"Sản phẩm rất tốt!"</blockquote> </article>
+            </section>
+        </article>
+
+        <aside class="related-products"> <h2>Sản phẩm tương tự</h2>
+            <ul>
+                <li><a href="/iphone-15">iPhone 15</a></li>
+                <li><a href="/samsung-s24">Samsung S24</a></li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ShopTLU. All rights reserved.</p>
+        <address> Địa chỉ: 175 Tây Sơn, Đống Đa, Hà Nội
+        </address>
+    </footer>
+
+</body>
+</html>
+
+Câu C2 (10đ) — So sánh & Tranh luận
+Quan điểm "dùng <div> cho mọi thứ" thực chất là một sai lầm kỹ thuật nghiêm trọng, thường được gọi là "Div-itis". Mặc dù thêm class giúp chúng ta định dạng giao diện, nhưng nó hoàn toàn thất bại trong việc giao tiếp với các hệ thống máy tính.Về mặt kỹ thuật, lý do đầu tiên là SEO (Tối ưu hóa tìm kiếm). Google Bot không ưu tiên đọc tên class (vốn mang tính cá nhân của lập trình viên), nó dựa vào các thẻ như <main>, <article>, <h1> để lập chỉ mục. Nếu chỉ dùng <div>, thuật toán sẽ coi trang web là một khối văn bản phẳng, khiến sản phẩm của bạn bị đẩy xuống dưới trên bảng xếp hạng tìm kiếm. Lý do thứ hai là Accessibility (Khả năng tiếp cận). Những người khiếm thị sử dụng Screen Reader dựa vào các thẻ như <nav> hoặc <button> để hiểu cấu trúc trang. Một trang web toàn <div> đối với họ giống như một cuốn sách không có mục lục và tiêu đề, khiến họ không thể điều hướng.Một ví dụ cụ thể: Trên trang sản phẩm, nếu dùng <div class="price-new">25tr</div>, Google chỉ thấy một con số. Nhưng nếu dùng thẻ <ins>25.000.000đ</ins>, trình duyệt và công cụ tìm kiếm hiểu ngay đây là "giá mới sau khi giảm". Điều này giúp hiển thị các thông tin khuyến mãi ngay trên kết quả tìm kiếm (Rich Snippets), giúp tăng tỷ lệ click của khách hàng.Tuy nhiên, <div> không hề bị "khai tử". Nó vẫn là lựa chọn phù hợp nhất trong trường hợp cần các container trung tính để phục vụ mục đích dàn trang (layout) hoặc bọc các phần tử để áp dụng CSS (như Flexbox/Grid) mà bản thân khối đó không mang ý nghĩa nội dung cụ thể nào.Việc học thêm hơn 20 thẻ Semantic không tốn thời gian bằng việc phải đi sửa lỗi SEO hay lỗi hiển thị trên các thiết bị hỗ trợ sau này. Đó là sự khác biệt giữa một thợ gõ code và một Web Developer chuyên nghiệp.
