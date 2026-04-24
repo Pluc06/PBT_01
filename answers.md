@@ -12,7 +12,7 @@ Câu A1 (5đ) — HTTP & Browser
 (1) Status Code của request đầu tiên
 (2) Tổng thời gian load trang
 (3) Một request trả về file CSS
-c:\Users\pvanl\Pictures\Screenshots\Screenshot 2026-04-24 222816.png
+![alt text](<Screenshot 2026-04-24 222816.png>)
 *(Nguồn tham chiếu: File 01_introduction_html_universe.md — Phần 3 (HTTP — Giao thức giao tiếp), Phần 6 (Hands-on Practice) và Phụ lục.)
 Câu A2 (5đ) — Semantic HTML 
 *(Nguồn tham chiếu:04_visible_part_html.md - Phần 1 và phần 3)
